@@ -73,7 +73,7 @@ const strip = (val) => {
 
 // Standard Markdown Slide
 const markdown = (text, style) => {
-  style = style || {width: "75%", margin: "0 auto"};
+  style = Object.assign({width: "75%", margin: "0 auto"}, style || {});
   return (
     <div style={style}>
       <Markdown>
@@ -113,13 +113,55 @@ export default class Presentation extends React.Component {
             * ----------------------------------------------------------------- */}
           <Slide>
             {markdown(`
-              ## MOTIVATION
-
-              * **Multiple** projects
-              * Nearly **identical**
-              * Complex **workflows**
+              ## MODERN JAVASCRIPT
             `)}
           </Slide>
+          <Slide>
+            {/*eslint-disable max-len*/markdown(`
+              ![React So Hot](https://camo.githubusercontent.com/a85f7c2c03b36655323ec7a3250057233e82ef55/68747470733a2f2f692e696d6775722e636f6d2f695549497571622e6a7067)
+            `)/*eslint-enable max-len*/}
+          </Slide>
+          <Slide>
+            {markdown(`
+              ### SO MANY TOOLS
+
+              * **Build**: Babel, Webpack
+              * **Test Tools**: Magellan, Karma, Mocha, Enzyme
+              * **Quality**: Eslint, Istanbul
+            `)}
+          </Slide>
+          <Slide>
+            {markdown(`
+              ### SO MANY WORKFLOWS
+
+              * **Watch**: dev/test JS, Karma
+              * **Build**: clean, build, prod/dev
+              * **Test**: client, node, coverage
+              * **Publish**: git, npm
+            `)}
+          </Slide>
+          <Slide>
+            {markdown(`
+              ## SO MANY PROJECTS
+
+              * **~60** React components
+              * **~10** Hapi plugins, helpers
+              * **~15+** App servers
+            `)}
+          </Slide>
+          <Slide>
+            {/*eslint-disable max-len*/markdown(`
+              _welcome to_ ...
+
+              &nbsp;
+
+              ## [JAVASCRIPT FATIGUE](https://medium.com/@ericclemmons/javascript-fatigue-48d4011b6fc4#.xioz52ymh)
+            `)/*eslint-enable max-len*/}
+          </Slide>
+
+          {/* -----------------------------------------------------------------
+            * Section: Builder
+            * ----------------------------------------------------------------- */}
           <Slide>
             {markdown(`
               ## BUILDER
@@ -129,13 +171,43 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             {markdown(`
-              ## ECOSYSTEM
+              ### USE CASES
 
-              * \`builder\`
-              * \`builder-init\`
-              * \`builder-ARCHETYPE_NAME\`
+              * **Multiple** projects
+              * Nearly **identical**
+              * Complex **workflows**
             `)}
           </Slide>
+          <Slide>
+            {markdown(`
+              ## ECOSYSTEM
+
+              * [**\`builder\`**](https://github.com/FormidableLabs/builder):
+                Task runner.
+              * [**\`builder-init\`**](https://github.com/FormidableLabs/builder-init):
+                Project generator.
+              * **\`builder-ARCHETYPE\`**: Project configs, workflows, etc.
+            `, { width: "90%" })}
+          </Slide>
+          <Slide>
+            {markdown(`
+              ## HOW IT WORKS
+
+              * \`builder\` replaces \`npm run\`
+              * Archetype contains \`scripts\` + configs
+              * \`builder\` magically _merges_ the archetype into your project
+            `, { width: "95%" })}
+          </Slide>
+          <Slide>
+            {markdown(`
+              ## GOALS
+
+              * Developers easily **use**
+              * Architects centrally **control**
+              * Projects can **flexibly** deviate
+            `, { width: "80%" })}
+          </Slide>
+
           {/* -----------------------------------------------------------------
             * Section: Builder
             * ----------------------------------------------------------------- */}
@@ -156,6 +228,23 @@ export default class Presentation extends React.Component {
 
               The "mission control" for a set of identical projects
             `)}
+          </Slide>
+          <Slide>
+            {markdown(`
+              ## ASSESSMENT
+
+              * Identify project "types"
+              * Aim for **one** archetype per project type
+            `)}
+          </Slide>
+          <Slide>
+            {/*eslint-disable max-len*/markdown(`
+              ## EXAMPLES
+
+              * [\`builder-react-component\`](https://github.com/FormidableLabs/builder-react-component)
+              * \`builder-react-app\`
+              * \`builder-hapi-plugin\`
+            `)/*eslint-enable max-len*/}
           </Slide>
           <Slide>
             {markdown(`
