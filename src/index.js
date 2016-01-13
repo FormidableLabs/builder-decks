@@ -312,12 +312,18 @@ export default class Presentation extends React.Component {
               ### FILES
 
               \`\`\`
+              DEVELOPMENT.md
+              package.json
+              dev/package.json
+
               config/
                 babel/
                 eslint/
                 karma/
                 webpack/
-              DEVELOPMENT.md
+
+              init.js
+              init/
               \`\`\`
             `)}
           </Slide>
