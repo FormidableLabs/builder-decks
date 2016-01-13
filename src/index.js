@@ -229,6 +229,14 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             {markdown(`
+              ## THE "MAGIC"
+
+              * Mutate **\`PATH\`** to include ARCHETYPE **\`.bin\`**
+              * Mutate **\`NODE_PATH\`** to include ARCHETYPE **\`node_modules\`**
+            `, { width: "90%" })}
+          </Slide>
+          <Slide>
+            {markdown(`
               ## DEMO
             `)}
             <CodePane
@@ -283,12 +291,55 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             {/*eslint-disable max-len*/markdown(`
-              ## ARCHETYPE \`package.json\`
+              ### TASKS
 
-              [\`builder-react-component/package.json\`](https://github.com/FormidableLabs/builder-react-component/package.json)
+              * [\`formidable-react-component-boilerplate/package.json\`](https://github.com/FormidableLabs/formidable-react-component-boilerplate/package.json)
+              * [\`builder-react-component/package.json\`](https://github.com/FormidableLabs/builder-react-component/package.json)
+              * **Note**: Special **\`npm:*\`** tasks
             `)/*eslint-enable max-len*/}
           </Slide>
+          <Slide>
+            {/*eslint-disable max-len*/markdown(`
+              ### DEPENDENCIES
 
+              * [\`formidable-react-component-boilerplate/package.json\`](https://github.com/FormidableLabs/formidable-react-component-boilerplate/package.json)
+              * [\`builder-react-component/package.json\`](https://github.com/FormidableLabs/builder-react-component/package.json)
+              * [\`builder-react-component/dev/package.json\`](https://github.com/FormidableLabs/builder-react-component/package.json)
+            `)/*eslint-enable max-len*/}
+          </Slide>
+          <Slide>
+            {markdown(`
+              ### FILES
+
+              \`\`\`
+              config/
+                babel/
+                eslint/
+                karma/
+                webpack/
+              DEVELOPMENT.md
+              \`\`\`
+            `)}
+          </Slide>
+          <Slide>
+            {markdown(`
+              ## DEMO
+            `)}
+            <CodePane
+              source={strip(`
+                # See all tasks
+                \$ builder help
+
+                \$ builder run check
+                \$ builder run lint
+
+                # Override \`lint-client\`
+                \$ builder run lint-client
+                \$ builder run lint
+                \$ builder run check
+              `)}
+            />
+          </Slide>
 
           {/* -----------------------------------------------------------------
             * Section: Init
@@ -302,9 +353,9 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             {markdown(`
-              ## WORK IN PROGRESS
+              ## DEMO
 
-              _\`builder-init\` demo_
+              **Note**: Work In Progress
             `)}
           </Slide>
 
