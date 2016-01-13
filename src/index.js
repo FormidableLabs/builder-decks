@@ -179,6 +179,15 @@ export default class Presentation extends React.Component {
             `)}
           </Slide>
           <Slide>
+            {/*eslint-disable max-len*/markdown(`
+              ### GUIDING PRINCIPLES
+
+              * It&apos;s "**just npm**"
+              * **Avoid** "buying the farm"
+              * You can [**give up**](https://github.com/FormidableLabs/builder#i-give-up-how-do-i-abandon-builder)
+            `)/*eslint-enable max-len*/}
+          </Slide>
+          <Slide>
             {markdown(`
               ## ECOSYSTEM
 
@@ -233,6 +242,7 @@ export default class Presentation extends React.Component {
 
               * Mutate **\`PATH\`** to include ARCHETYPE **\`.bin\`**
               * Mutate **\`NODE_PATH\`** to include ARCHETYPE **\`node_modules\`**
+              * Merge archetype and project **\`package.json:scripts\`**
             `, { width: "90%" })}
           </Slide>
           <Slide>
