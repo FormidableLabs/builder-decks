@@ -91,6 +91,9 @@ export default class Presentation extends React.Component {
     return (
       <Spectacle theme={theme}>
         <Deck progress="bar" transition={["slide"]} transitionDuration={500}>
+          {/* -----------------------------------------------------------------
+            * Title
+            * ----------------------------------------------------------------- */}
           <Slide bgColor="primary">
             <Heading size={1} fit caps lineHeight={1} textColor="black">
               Builder
@@ -104,6 +107,10 @@ export default class Presentation extends React.Component {
               </Text>
             </Link>
           </Slide>
+
+          {/* -----------------------------------------------------------------
+            * Section: Introduction
+            * ----------------------------------------------------------------- */}
           <Slide>
             {markdown(`
               ## MOTIVATION
@@ -113,6 +120,57 @@ export default class Presentation extends React.Component {
               * Complex **workflows**
             `)}
           </Slide>
+          <Slide>
+            {markdown(`
+              ## BUILDER
+
+              Your \`package.json\`, **abstracted** and **managed**
+            `)}
+          </Slide>
+          <Slide>
+            {markdown(`
+              ## ECOSYSTEM
+
+              * \`builder\`
+              * \`builder-init\`
+              * \`builder-ARCHETYPE_NAME\`
+            `)}
+          </Slide>
+          {/* -----------------------------------------------------------------
+            * Section: Builder
+            * ----------------------------------------------------------------- */}
+          <Slide>
+            {markdown(`
+              ## BUILDER
+
+              A replacement for \`npm run\` with a _few special extras_.
+            `)}
+          </Slide>
+
+          {/* -----------------------------------------------------------------
+            * Section: Archetypes
+            * ----------------------------------------------------------------- */}
+          <Slide>
+            {markdown(`
+              ## ARCHETYPES
+
+              The "mission control" for a set of identical projects
+            `)}
+          </Slide>
+          <Slide>
+            {markdown(`
+              ## CONTENTS
+
+              * NPM tasks
+              * Configurations
+              * Boilerplate files
+              * Documentation
+            `)}
+          </Slide>
+
+          {/* -----------------------------------------------------------------
+            * Thanks
+            * ----------------------------------------------------------------- */}
           <Slide bgColor="primary">
             <Heading size={1} caps fit lineHeight={1.5} textColor="secondary">
               Made with love in Seattle by

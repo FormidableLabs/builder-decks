@@ -177,12 +177,6 @@ pre[class*="language-"] {
   color: #67cdcc;
 }
 
-/* Bump up the markdown fences code. */
-code.language-markup {
-  font-size: 1.75em;
-}
-
-
 .token.important,
 .token.bold {
   font-weight: bold;
@@ -197,4 +191,14 @@ code.language-markup {
 
 .token.inserted {
   color: green;
+}
+
+/* Bump up the markdown fences code. */
+code.language-markup {
+  font-size: 1.75em;
+}
+
+/* HACKS: Review and remove */
+h2 {
+  margin-bottom: 0.25em !important;
 }
