@@ -7,7 +7,7 @@ import {
   // BlockQuote,
   // Cite,
   // Code,
-  // CodePane,
+  CodePane,
   Deck,
   // Fill,
   Heading,
@@ -125,7 +125,7 @@ export default class Presentation extends React.Component {
             {markdown(`
               ### SO MANY TOOLS
 
-              * **Build**: Babel, Webpack
+              * **Build**: JSX, ES6, Babel, Webpack
               * **Test Tools**: Magellan, Karma, Mocha, Enzyme
               * **Quality**: Eslint, Istanbul
             `)}
@@ -215,8 +215,32 @@ export default class Presentation extends React.Component {
             {markdown(`
               ## BUILDER
 
-              A replacement for \`npm run\` with a _few special extras_.
+              A replacement for **\`npm run\`** with a _few special extras_
             `)}
+          </Slide>
+          <Slide>
+            {/*eslint-disable max-len*/markdown(`
+              ## ACTIONS
+
+              * [\`builder run TASK\`](https://github.com/FormidableLabs/builder#builder-run)
+              * [\`builder concurrent TASK1 TASK2\`](https://github.com/FormidableLabs/builder#builder-concurrent)
+              * [\`builder envs TASK JSON_ARRAY\`](https://github.com/FormidableLabs/builder#builder-envs)
+            `, { width: "90%" })/*eslint-enable max-len*/}
+          </Slide>
+          <Slide>
+            {markdown(`
+              ## DEMO
+            `)}
+            <CodePane
+              source={strip(`
+                \$ builder run down
+                \$ builder run fail
+                \$ builder run --tries=3 fail
+
+                \$ builder concurrent down down down
+                \$ builder envs msg '[{"MSG": "hi"}, {"MSG": "yo"}]'
+              `)}
+            />
           </Slide>
 
           {/* -----------------------------------------------------------------
@@ -254,6 +278,33 @@ export default class Presentation extends React.Component {
               * Configurations
               * Boilerplate files
               * Documentation
+              * Templates (_forthcoming_)
+            `)}
+          </Slide>
+          <Slide>
+            {/*eslint-disable max-len*/markdown(`
+              ## ARCHETYPE \`package.json\`
+
+              [\`builder-react-component/package.json\`](https://github.com/FormidableLabs/builder-react-component/package.json)
+            `)/*eslint-enable max-len*/}
+          </Slide>
+
+
+          {/* -----------------------------------------------------------------
+            * Section: Init
+            * ----------------------------------------------------------------- */}
+          <Slide>
+            {markdown(`
+              ## BUILDER INIT
+
+              A simple project generator from archetype templates.
+            `)}
+          </Slide>
+          <Slide>
+            {markdown(`
+              ## WORK IN PROGRESS
+
+              _\`builder-init\` demo_
             `)}
           </Slide>
 
@@ -264,7 +315,7 @@ export default class Presentation extends React.Component {
             <Heading size={1} caps fit lineHeight={1.5} textColor="secondary">
               Made with love in Seattle by
             </Heading>
-            <Link href="http://www.formidablelabs.com">
+            <Link href="http://www.formidable.com">
               <Image width="100%" src={images.logo}/>
             </Link>
           </Slide>
