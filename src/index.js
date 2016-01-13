@@ -356,6 +356,17 @@ export default class Presentation extends React.Component {
               `)}
             />
           </Slide>
+          <Slide>
+            {/*eslint-disable max-len*/markdown(`
+              ### COMPLEXITIES
+
+              Easy for **users**, complex for **architects**
+
+              * [Archetype authoring](https://github.com/FormidableLabs/builder#archetypes)
+              * [Tips + Tricks](https://github.com/FormidableLabs/builder#tips-tricks--notes):
+                \`process.cwd()\`, \`require.resolve()\`
+            `)/*eslint-enable max-len*/}
+          </Slide>
 
           {/* -----------------------------------------------------------------
             * Section: Init
