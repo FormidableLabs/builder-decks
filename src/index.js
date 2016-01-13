@@ -40,6 +40,33 @@ const images = {
 
 preloader(images);
 
+// Helpers
+// -------
+// A naive, indent preserving strip.
+const strip = (val) => {
+  // Find first line with text. Capture that indent level.
+  let indent = null;
+
+  return val.split("\n")
+    .map((line) => {
+      // Capture initial indent.
+      if (indent === null && /^\s/.test(line)) {
+        indent = /^ */.exec(line)[0];
+      }
+
+      // If no indent, ignore.
+      if (indent === null) {
+        return null;
+      }
+
+      return line
+        .replace(new RegExp(`^${indent}`), "")
+        .replace(/\s*$/, "");
+    })
+    .join("\n")
+    .replace(/^\s*|\s$/, "");
+};
+
 export default class Presentation extends React.Component {
   render() {
     return (
@@ -63,15 +90,17 @@ export default class Presentation extends React.Component {
               Inline Markdown
             </Heading>
             <Markdown>
-              {`
-## Markdown!
+              {strip(`
+                ## Markdown!
 
-You can write inline images, [Markdown Links](http://commonmark.org),
-paragraph text and most other markdown syntax
-* Lists too!
-* With ~~strikethrough~~ and _italic_
-* And lets not forget **bold**
-              `}
+                \`\`\`js
+                TODO HERE:
+                1. Get a strip() around templates.
+                2. Start putting in content!
+                \`\`\`
+
+                ho
+              `)}
             </Markdown>
           </Slide>
           <Slide bgColor="primary">
