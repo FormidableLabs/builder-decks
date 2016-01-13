@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "webpack --config webpack.config.js",
-    "lint": "eslint --ext .js,.jsx src",
+    "lint": "eslint --ext .js,.jsx src themes",
     "start": "node server.js"
   },
   "author": "Ryan Roemer <ryan.roemer@formidable.com>",

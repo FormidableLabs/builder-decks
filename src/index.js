@@ -27,12 +27,12 @@ import {
 import preloader from "spectacle/lib/utils/preloader";
 
 // Import theme
-import createTheme from "spectacle/lib/themes/default";
+import theme from "../themes/formidable/index";
 
 // Require CSS
 require("normalize.css");
 require("spectacle/lib/themes/default/index.css");
-
+require("../themes/formidable/index.css");
 
 const images = {
   logo: require("../assets/formidable-logo.svg")
@@ -40,15 +40,11 @@ const images = {
 
 preloader(images);
 
-const theme = createTheme({
-  primary: "#ff4081"
-});
-
 export default class Presentation extends React.Component {
   render() {
     return (
       <Spectacle theme={theme}>
-        <Deck transition={["slide"]} transitionDuration={500}>
+        <Deck progress="bar" transition={["slide"]} transitionDuration={500}>
           <Slide bgColor="primary">
             <Heading size={1} fit caps lineHeight={1} textColor="black">
               Builder
@@ -57,11 +53,13 @@ export default class Presentation extends React.Component {
               Multi-project npm workflows
             </Heading>
             <Link href="https://github.com/FormidableLabs/builder">
-              <Text bold caps textColor="tertiary">View on Github</Text>
+              <Text bold textColor="tertiary" style={{margin: "1em auto"}}>
+                github.com/FormidableLabs/builder
+              </Text>
             </Link>
           </Slide>
-          <Slide bgColor="tertiary">
-            <Heading caps fit size={1} textColor="primary">
+          <Slide>
+            <Heading caps fit size={1}>
               Inline Markdown
             </Heading>
             <Markdown>
@@ -76,8 +74,8 @@ paragraph text and most other markdown syntax
               `}
             </Markdown>
           </Slide>
-          <Slide bgColor="tertiary">
-            <Heading size={1} caps fit lineHeight={1.5} textColor="primary">
+          <Slide bgColor="primary">
+            <Heading size={1} caps fit lineHeight={1.5} textColor="secondary">
               Made with love in Seattle by
             </Heading>
             <Link href="http://www.formidablelabs.com">
