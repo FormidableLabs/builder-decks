@@ -2,7 +2,7 @@ import createTheme from "spectacle/lib/themes/default/index";
 
 const colors = {
   primary: "#FFFFFF",
-  secondary: "#898685",
+  secondary: "#797675",
   tertiary: "#5f5c5b",
   // brand colors:
   // black and its tints:

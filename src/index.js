@@ -40,9 +40,13 @@ const images = {
 
 preloader(images);
 
+// ----------------------------------------------------------------------------
 // Helpers
-// -------
+// ----------------------------------------------------------------------------
 // A naive, indent preserving strip.
+//
+// TODO: Extract and open source
+// https://github.com/FormidableLabs/gulp-html-extract/blob/master/lib/strip-indent.js
 const strip = (val) => {
   // Find first line with text. Capture that indent level.
   let indent = null;
@@ -67,6 +71,21 @@ const strip = (val) => {
     .replace(/^\s*|\s$/, "");
 };
 
+// Standard Markdown Slide
+const markdown = (text, style) => {
+  style = style || {width: "75%", margin: "0 auto"};
+  return (
+    <div style={style}>
+      <Markdown>
+        {strip(text)}
+      </Markdown>
+    </div>
+  );
+};
+
+// ----------------------------------------------------------------------------
+// The Deck
+// ----------------------------------------------------------------------------
 export default class Presentation extends React.Component {
   render() {
     return (
@@ -86,22 +105,13 @@ export default class Presentation extends React.Component {
             </Link>
           </Slide>
           <Slide>
-            <Heading caps fit size={1}>
-              Inline Markdown
-            </Heading>
-            <Markdown>
-              {strip(`
-                ## Markdown!
+            {markdown(`
+              ## MOTIVATION
 
-                \`\`\`js
-                TODO HERE:
-                1. Get a strip() around templates.
-                2. Start putting in content!
-                \`\`\`
-
-                ho
-              `)}
-            </Markdown>
+              * **Multiple** projects
+              * Nearly **identical**
+              * Complex **workflows**
+            `)}
           </Slide>
           <Slide bgColor="primary">
             <Heading size={1} caps fit lineHeight={1.5} textColor="secondary">

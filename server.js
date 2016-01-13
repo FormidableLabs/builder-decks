@@ -16,14 +16,14 @@ app.use(require("webpack-dev-middleware")(compiler, {
 
 app.use(require("webpack-hot-middleware")(compiler));
 
-app.get("*", function(req, res) {
+app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.listen(3000, "localhost", function (err) {
+  /*eslint-disable no-console*/
   if (err) {
-    console.log(err);
-    return;
+    return console.error(err);
   }
 
   console.log("Listening at http://localhost:3000");

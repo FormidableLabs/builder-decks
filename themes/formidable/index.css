@@ -177,6 +177,12 @@ pre[class*="language-"] {
   color: #67cdcc;
 }
 
+/* Bump up the markdown fences code. */
+code.language-markup {
+  font-size: 1.75em;
+}
+
+
 .token.important,
 .token.bold {
   font-weight: bold;
