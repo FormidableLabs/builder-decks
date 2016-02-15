@@ -8,7 +8,7 @@ module.exports = {
   entry: [
     "webpack-hot-middleware/client",
     "babel-polyfill",
-    "./index"
+    "./src/index"
   ],
   output: {
     path: path.join(__dirname, "dist"),
@@ -19,6 +19,12 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
+  resolve: {
+    alias: {
+      "decks-assets": path.join(__dirname, "assets"),
+      "decks-themes": path.join(__dirname, "themes")
+    }
+  },
   module: {
     loaders: [{
       test: /\.md$/,
@@ -29,11 +35,11 @@ module.exports = {
       loader: "babel-loader"
     }, {
       test: /\.css$/,
-      loaders: ["style", "raw"],
+      loaders: ["style-loader", "raw-loader"],
       include: __dirname
     }, {
       test: /\.svg$/,
-      loader: "url?limit=10000&mimetype=image/svg+xml",
+      loader: "url-loader?limit=10000&mimetype=image/svg+xml",
       include: path.join(__dirname, "assets")
     }, {
       test: /\.png$/,

@@ -27,15 +27,15 @@ import {
 import preloader from "spectacle/lib/utils/preloader";
 
 // Import theme
-import theme from "../themes/formidable/index";
+import theme from "decks-themes/formidable/index";
 
 // Require CSS
 require("normalize.css");
 require("spectacle/lib/themes/default/index.css");
-require("../themes/formidable/index.css");
+require("decks-themes/formidable/index.css");
 
 const images = {
-  logo: require("../assets/formidable-logo.svg")
+  logo: require("decks-assets/formidable-logo.svg")
 };
 
 preloader(images);

@@ -2,13 +2,13 @@
   "name": "builder-decks",
   "version": "0.0.1",
   "description": "Builder - Presentations / Decks",
-  "main": "index.js",
+  "main": "src/index.js",
   "author": "Ryan Roemer <ryan.roemer@formidable.com>",
   "license": "MIT",
   "scripts": {
     "clean": "rimraf dist",
     "build": "NODE_ENV=production webpack --config webpack.config.production.js",
-    "lint-client": "eslint --ext .js,.jsx -c .eslintrc-client themes presentation index.js",
+    "lint-client": "eslint --ext .js,.jsx -c .eslintrc-client themes src",
     "lint-server": "eslint --ext .js,.jsx -c .eslintrc-server server.js webpack.*.js",
     "lint": "npm run lint-client && npm run lint-server",
     "test": "npm run lint",
@@ -19,6 +19,7 @@
     "normalize.css": "3.0.3",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
+    "react-router": "^2.0.0",
     "spectacle": "^1.0.0"
   },
   "devDependencies": {

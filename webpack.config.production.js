@@ -6,7 +6,7 @@ var webpack = require("webpack");
 module.exports = {
   entry: [
     "babel-polyfill",
-    "./index"
+    "./src/index"
   ],
   output: {
     path: path.join(__dirname, "dist"),
@@ -26,6 +26,12 @@ module.exports = {
       }
     })
   ],
+  resolve: {
+    alias: {
+      "decks-assets": path.join(__dirname, "assets"),
+      "decks-themes": path.join(__dirname, "themes")
+    }
+  },
   module: {
     loaders: [{
       test: /\.md$/,
@@ -42,7 +48,7 @@ module.exports = {
       loader: "url-loader?limit=8192"
     }, {
       test: /\.svg$/,
-      loader: "url?limit=10000&mimetype=image/svg+xml"
+      loader: "url-loader?limit=10000&mimetype=image/svg+xml"
     }]
   }
 };
