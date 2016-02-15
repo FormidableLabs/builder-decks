@@ -86,7 +86,7 @@ const markdown = (text, style) => {
 // ----------------------------------------------------------------------------
 // The Deck
 // ----------------------------------------------------------------------------
-export default class Presentation extends React.Component {
+export class Presentation extends React.Component {
   render() {
     return (
       <Spectacle theme={theme}>
@@ -402,3 +402,13 @@ export default class Presentation extends React.Component {
     );
   }
 }
+
+export default {
+  path: "march2016",
+
+  getComponent(location, callback) {
+    require.ensure([], (require) => {
+      callback(null, Presentation)
+    })
+  }
+};
