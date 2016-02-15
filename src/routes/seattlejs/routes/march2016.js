@@ -404,11 +404,7 @@ export class Presentation extends React.Component {
 }
 
 export default {
+  // TODO: Infer off `__filename`.
   path: "march2016",
-
-  getComponent(location, callback) {
-    require.ensure([], (require) => {
-      callback(null, Presentation)
-    })
-  }
+  component: Presentation
 };

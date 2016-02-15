@@ -4,6 +4,9 @@ var path = require("path");
 var webpack = require("webpack");
 
 module.exports = {
+  // TODO: Common chunks plugin.
+  // TODO: Code splitting for entry points.
+  // TODO: Verify full production bundle.
   entry: [
     "babel-polyfill",
     "./src/index"

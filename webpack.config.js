@@ -5,6 +5,8 @@ var webpack = require("webpack");
 
 module.exports = {
   devtool: "source-map",
+  // TODO: Common chunks plugin.
+  // TODO: Code splitting for entry points.
   entry: [
     "webpack-hot-middleware/client",
     "babel-polyfill",
