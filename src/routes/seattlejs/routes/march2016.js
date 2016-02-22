@@ -404,7 +404,6 @@ export class Presentation extends React.Component {
 }
 
 export default {
-  // TODO: Infer off `__filename`.
-  path: "march2016",
+  path: __filename.split("/").pop().replace(/\.jsx?$/, ""),
   component: Presentation
 };

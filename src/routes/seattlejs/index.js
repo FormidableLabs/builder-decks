@@ -17,7 +17,7 @@ class Index extends React.Component {
 }
 
 export default {
-  path: "seattlejs",
+  path: __dirname.split("/").pop(),
   indexRoute: {
     component: Index
   },
