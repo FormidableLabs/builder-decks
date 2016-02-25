@@ -12,7 +12,7 @@
     "lint-server": "eslint --ext .js,.jsx -c .eslintrc-server server.js webpack.*.js",
     "lint": "npm run lint-client && npm run lint-server",
     "test": "npm run lint",
-    "deploy": "npm run clean & npm run build && surge -p .",
+    "deploy": "npm run clean & npm run build && surge -p . -d seattlejs-builder.surge.sh",
     "start": "NODE_ENV=development node server.js"
   },
   "dependencies": {

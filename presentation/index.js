@@ -35,10 +35,28 @@ require("spectacle/lib/themes/default/index.css");
 require("../themes/formidable/index.css");
 
 const images = {
+  polygons: require("../assets/img/bg/formidable/formidangles-dark.svg"),
+  polygonsGray: require("../assets/img/bg/formidable/formidangles-gray.svg"),
+  bgBlueprint: require("../assets/img/bg/slides/pexels-blueprint.jpg"),
+  bgCards: require("../assets/img/bg/slides/pexels-cards.jpg"),
+  bgDrawingParts: require("../assets/img/bg/slides/newoldstock-drawing-parts.jpg"),
+  bgHerdingBuffalo: require("../assets/img/bg/slides/newoldstock-herding-buffalo.jpg"),
+  bgLionTamer: require("../assets/img/bg/slides/newoldstock-lion-tamer.jpg"),
+  bgMissionControl: require("../assets/img/bg/slides/newoldstock-gemini-mission-control.jpg"),
+  bgShuttle: require("../assets/img/bg/slides/newoldstock-shuttle.jpg"),
+  bgTypewriterParts: require("../assets/img/bg/slides/unsplash-typewriter-parts.jpg"),
+  bgTools: require("../assets/img/bg/slides/pexels-tools.jpg"),
   logo: require("../assets/formidable-logo.svg")
 };
 
 preloader(images);
+
+const BG_MARKDOWN_BLACKBOX = {
+  background: "rgba(255, 255, 255, 0.9);",
+  borderRadius: "0.2em",
+  width: "90%",
+  padding: "0.5em 2em"
+};
 
 // ----------------------------------------------------------------------------
 // Helpers
@@ -86,6 +104,9 @@ const markdown = (text, style) => {
 // ----------------------------------------------------------------------------
 // The Deck
 // ----------------------------------------------------------------------------
+//
+// * Meetup: http://www.meetup.com/seattlejs/events/221671534/
+// *
 export default class Presentation extends React.Component {
   render() {
     return (
@@ -94,16 +115,24 @@ export default class Presentation extends React.Component {
           {/* -----------------------------------------------------------------
             * Title
             * ----------------------------------------------------------------- */}
-          <Slide bgColor="primary">
-            <Heading size={1} fit caps lineHeight={1} textColor="black">
+          <Slide id="title" bgImage={images.polygons}>
+            <Heading size={1} fit caps textColor="primary">
+              Wrangling Herds of
+            </Heading>
+            <Heading size={1} fit caps textColor="lightestGray">
+              JavaScript Projects with
+            </Heading>
+            <Heading size={1} fit caps lineHeight={1} textColor="primary">
               Builder
             </Heading>
-            <Heading size={1} fit caps>
-              Multi-project npm workflows
-            </Heading>
-            <Link href="https://github.com/FormidableLabs/builder">
-              <Text bold textColor="tertiary" style={{margin: "1em auto"}}>
-                github.com/FormidableLabs/builder
+            <Link href="http://seattlejs-builder.surge.sh/">
+              <Text bold textColor="palRed" style={{marginTop: "1em"}}>
+                seattlejs-builder.surge.sh
+              </Text>
+            </Link>
+            <Link href="https://github.com/FormidableLabs?utf8=%E2%9C%93&query=builder">
+              <Text bold textColor="lightestGray" style={{marginTop: "0.4em"}}>
+                github.com/FormidableLabs/builder*
               </Text>
             </Link>
           </Slide>
@@ -111,33 +140,54 @@ export default class Presentation extends React.Component {
           {/* -----------------------------------------------------------------
             * Section: Introduction
             * ----------------------------------------------------------------- */}
-          <Slide>
+          <Slide bgImage={images.bgLionTamer} bgDarken={0.20}>
             {markdown(`
+              _welcome to_ ...
+
+              &nbsp;
+
               ## MODERN JAVASCRIPT
-            `)}
+            `, BG_MARKDOWN_BLACKBOX)}
           </Slide>
           <Slide>
             {/*eslint-disable max-len*/markdown(`
-              ![React So Hot](https://camo.githubusercontent.com/a85f7c2c03b36655323ec7a3250057233e82ef55/68747470733a2f2f692e696d6775722e636f6d2f695549497571622e6a7067)
+              _we have_ ...
+
+              &nbsp;
+
+              ## [JAVASCRIPT FATIGUE](https://medium.com/@ericclemmons/javascript-fatigue-48d4011b6fc4#.xioz52ymh)
             `)/*eslint-enable max-len*/}
           </Slide>
           <Slide>
+            {/*eslint-disable max-len*/markdown(`
+              _and it gets worse for_ ...
+
+              &nbsp;
+
+              ### LARGE TEAMS
+
+              &amp;
+
+              ### BIG PROJECTS
+            `)/*eslint-enable max-len*/}
+          </Slide>
+          <Slide bgImage={images.bgTypewriterParts} bgDarken={0.20}>
             {markdown(`
               ### SO MANY TOOLS
 
-              * **Build**: JSX, ES6, Babel, Webpack
-              * **Test Tools**: Magellan, Karma, Mocha, Enzyme
+              * **Build**: Babel, ES-next, Webpack, PostCSS
+              * **Test**: Karma, Webdriver.io, Mocha, Enzyme
               * **Quality**: Eslint, Istanbul
-            `)}
+            `, BG_MARKDOWN_BLACKBOX)}
           </Slide>
           <Slide>
             {markdown(`
               ### SO MANY WORKFLOWS
 
-              * **Watch**: dev/test JS, Karma
               * **Build**: clean, build, prod/dev
               * **Test**: client, node, coverage
-              * **Publish**: git, npm
+              * **Watch**: dev/test JS, Karma
+              * **Publish**: git, npm, CDN
             `)}
           </Slide>
           <Slide>
@@ -150,82 +200,199 @@ export default class Presentation extends React.Component {
             `)}
           </Slide>
           <Slide>
-            {/*eslint-disable max-len*/markdown(`
-              _welcome to_ ...
+            {markdown(`
+              ## HOW TO WRANGLE?
+
+              * [grunt](http://gruntjs.com/)
+              * [gulp](http://gulpjs.com/)
+              * [broccoli](https://github.com/broccolijs/broccoli)
+              * **npm workflows?**
+            `)}
+          </Slide>
+          {/* -----------------------------------------------------------------
+            * Section: npm workflows
+            * ----------------------------------------------------------------- */}
+          <Slide bgImage={images.polygonsGray} bgDarken={0.20}>
+            {markdown(`
+              _**but first, an aside:**_
 
               &nbsp;
 
-              ## [JAVASCRIPT FATIGUE](https://medium.com/@ericclemmons/javascript-fatigue-48d4011b6fc4#.xioz52ymh)
-            `)/*eslint-enable max-len*/}
+              ## [npm workflows](http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/)
+            `, BG_MARKDOWN_BLACKBOX)}
           </Slide>
-
-          {/* -----------------------------------------------------------------
-            * Section: Builder
-            * ----------------------------------------------------------------- */}
           <Slide>
             {markdown(`
-              ## BUILDER
-
-              Your \`package.json\`, **abstracted** and **managed**
+              ### TASK RUNNERS
             `)}
+            <CodePane
+              lang="javascript"
+              source={strip(`
+                // grunt - Gruntfile.js
+                grunt.registerTask("test", /*FN_STUFF*/);
+
+                // gulp - gulpfile.js
+                gulp.task("test", /*FN_STUFF*/);
+
+                // npm - package.json
+                "scripts": {
+                  "test": "mocha test/*.spec.js"
+                }
+              `)}
+            />
           </Slide>
           <Slide>
             {markdown(`
-              ### USE CASES
+              ### RUNNING TASKS
+            `)}
+            <CodePane
+              lang="bash"
+              source={strip(`
+                # grunt
+                $ grunt test
 
-              * **Multiple** projects
-              * Nearly **identical**
-              * Complex **workflows**
+                # gulp
+                $ gulp test
+
+                # npm
+                $ npm run test
+              `)}
+            />
+          </Slide>
+          <Slide>
+            {markdown(`
+              ### INTEGRATION
+            `)}
+            <CodePane
+              lang="javascript"
+              source={strip(`
+                // npm - package.json
+                "scripts": {
+                  "test-cli": "mocha test/*.spec.js",
+                  "test-grunt": "grunt test",
+                  "test-gulp": "gulp test",
+                }
+              `)}
+            />
+          </Slide>
+          <Slide>
+            {markdown(`
+              ### NPM WORKFLOWS
+
+              * Use underlying module \`.bin\`: (\`mocha\`, \`webpack\`, etc.)
+              * Rely on modules to provide watch, build, etc.
+              * Always current to module.
             `)}
           </Slide>
           <Slide>
             {/*eslint-disable max-len*/markdown(`
-              ### GUIDING PRINCIPLES
+              ### FOR EXAMPLE
 
-              * It&apos;s "**just npm**"
-              * **Avoid** "buying the farm"
-              * You can [**give up**](https://github.com/FormidableLabs/builder#i-give-up-how-do-i-abandon-builder)
+              &nbsp;
+
+              [little-loader/package.json](https://github.com/walmartlabs/little-loader/blob/master/package.json#L65-L99)
             `)/*eslint-enable max-len*/}
           </Slide>
-          <Slide>
-            {markdown(`
-              ## ECOSYSTEM
 
-              * [**\`builder\`**](https://github.com/FormidableLabs/builder):
-                Task runner.
-              * [**\`builder-init\`**](https://github.com/FormidableLabs/builder-init):
-                Project generator.
-              * **\`builder-ARCHETYPE\`**: Project configs, workflows, etc.
-            `, { width: "90%" })}
+          {/* -----------------------------------------------------------------
+            * Section: Introduction
+            * ----------------------------------------------------------------- */}
+          <Slide bgImage={images.bgDrawingParts} bgDarken={0.20}>
+            <div style={BG_MARKDOWN_BLACKBOX}>
+              <Heading fit caps textColor="tertiary">Builder</Heading>
+              {markdown(`
+                &nbsp;
+
+                Your \`package.json\`, **abstracted** &amp; **managed**
+              `)}
+            </div>
           </Slide>
           <Slide>
             {markdown(`
-              ## HOW IT WORKS
+              ### WHAT WE HAVE
+            `)}
+            <CodePane
+              lang="javascript"
+              source={strip(`
+                // <project1>/package.json
+                "scripts": {
+                  "foo": "echo FOO",
+                  "bar": "echo BAR",
+                  "foobar": "npm run foo && npm run bar",
+                }
 
-              * \`builder\` replaces \`npm run\`
-              * Archetype contains \`scripts\` + configs
-              * \`builder\` magically _merges_ the archetype into your project
-            `, { width: "95%" })}
+                // <project2>/package.json
+                "scripts": {
+                  "foo": "echo FOO",
+                  "bar": "echo BAR",
+                  "foobar": "npm run foo && npm run bar",
+                }
+              `)}
+            />
           </Slide>
           <Slide>
             {markdown(`
-              ## GOALS
+              ### WHAT WE WANT
+            `)}
+            <CodePane
+              lang="javascript"
+              source={strip(`
+                // <project1>/package.json
+                "scripts": {}
 
-              * Developers easily **use**
-              * Architects centrally **control**
-              * Projects can **flexibly** deviate
-            `, { width: "80%" })}
+                // <project2>/package.json
+                "scripts": {}
+
+                // <MAGICALLY_AVAILABLE>/package.json
+                "scripts": {
+                  "foo": "echo FOO",
+                  "bar": "echo BAR",
+                  "foobar": "npm run foo && run run bar",
+                }
+              `)}
+            />
+          </Slide>
+          <Slide>
+            {markdown(`
+              ## A TALE IN 3 PARTS
+
+              &nbsp;
+
+              * Task **runner**
+              * Task, config **management** ("archetypes")
+              * Project **generation**
+            `, { width: "100%" })}
           </Slide>
 
           {/* -----------------------------------------------------------------
             * Section: Builder
             * ----------------------------------------------------------------- */}
+          <Slide bgImage={images.bgTools} bgDarken={0.20}>
+            <div style={BG_MARKDOWN_BLACKBOX}>
+              <Heading fit caps textColor="tertiary">Builder</Heading>
+              {markdown(`
+                &nbsp;
+
+                A modern runner for \`package.json\` tasks
+              `)}
+            </div>
+          </Slide>
           <Slide>
             {markdown(`
-              ## BUILDER
-
-              A replacement for **\`npm run\`** with a _few special extras_
+              ## GET STARTED
             `)}
+            <CodePane
+              lang="bash"
+              source={strip(`
+                \$ npm install builder
+
+                # Instead of:
+                \$ npm run <task>
+
+                # you can run:
+                \$ builder <action> <task>
+              `)}
+            />
           </Slide>
           <Slide>
             {/*eslint-disable max-len*/markdown(`
@@ -238,121 +405,230 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             {markdown(`
-              ## THE "MAGIC"
+              ## FLAGS
 
-              * Mutate **\`PATH\`** to include ARCHETYPE **\`.bin\`**
-              * Mutate **\`NODE_PATH\`** to include ARCHETYPE **\`node_modules\`**
-              * Merge archetype and project **\`package.json:scripts\`**
+              * \`--tries=<num>\`
+              * \`--setup=<task>\`
+              * \`--queue=<num>\`: Concurrency limit
+              * \`--[no-]buffer\`: Output at _end_
+              * \`--[no-]bail\`: End on 1st failure
             `, { width: "90%" })}
           </Slide>
           <Slide>
-            {markdown(`
-              ## DEMO
-            `)}
+            {/*eslint-disable max-len*/markdown(`
+              **Demo**: [builder-examples/01-builder](https://github.com/FormidableLabs/builder-examples/tree/master/01-builder)
+            `, { width: "90%", marginBottom: "1em" })/*eslint-enable max-len*/}
             <CodePane
+              lang="bash"
               source={strip(`
-                \$ builder run down
+                \$ builder run hello
                 \$ builder run fail
                 \$ builder run --tries=3 fail
 
-                \$ builder concurrent down down down
-                \$ builder envs msg '[{"MSG": "hi"}, {"MSG": "yo"}]'
+                \$ builder concurrent hello hello hello
+                \$ builder concurrent --buffer hello hello hello
+                \$ builder concurrent --queue=1 hello hello hello
+                \$ builder envs hello-env '[{"NAME":"Bob"},{"NAME":"Bill"}]'
               `)}
             />
+          </Slide>
+          <Slide>
+            {markdown(`
+              ### RUNNER USE CASES
+
+              * **Complex** test tasks
+              * **Concurrent** tasks
+              * **Cross-OS** environment variables
+            `, { width: "90%" })}
           </Slide>
 
           {/* -----------------------------------------------------------------
             * Section: Archetypes
             * ----------------------------------------------------------------- */}
-          <Slide>
-            {markdown(`
-              ## ARCHETYPES
+          <Slide bgImage={images.bgMissionControl} bgDarken={0.20}>
+            <div style={BG_MARKDOWN_BLACKBOX}>
+              <Heading fit caps textColor="tertiary">Archetypes</Heading>
+              {markdown(`
+                &nbsp;
 
-              The "mission control" for a set of identical projects
-            `)}
+                "Mission control" for a set of identical projects
+              `)}
+            </div>
+          </Slide>
+          <Slide>
+            {/*eslint-disable max-len*/markdown(`
+              ### THEMES
+
+              * It&apos;s "**almost npm**"
+              * **Avoid** "buying the farm"
+              * You can [**give up**](https://github.com/FormidableLabs/builder#i-give-up-how-do-i-abandon-builder)
+            `)/*eslint-enable max-len*/}
           </Slide>
           <Slide>
             {markdown(`
-              ## ASSESSMENT
+              ## HOW IT WORKS
 
-              * Identify project "types"
-              * Aim for **one** archetype per project type
+              * \`builder <action>\` replaces \`npm run\`
+              * Archetype has \`scripts\` + configs
+              * \`builder\` _merges_ archetype into root project
+            `, { width: "95%" })}
+          </Slide>
+          <Slide bgImage={images.bgHerdingBuffalo} bgDarken={0.20}>
+            {markdown(`
+              ### USE CASES
+
+              * **Multiple** projects / repos
+              * Nearly **identical**
+              * Complex **workflows**
+            `, BG_MARKDOWN_BLACKBOX)}
+          </Slide>
+          <Slide>
+            {markdown(`
+              ## GOALS
+
+              * Developers easily **use**
+              * Architects centrally **control**
+              * Projects can **flexibly** deviate
+            `, { width: "80%" })}
+          </Slide>
+          <Slide>
+            {markdown(`
+              ## GET STARTED
             `)}
+            <CodePane
+              lang="bash"
+              source={strip(`
+                \$ npm install --save builder builder-react-component
+                \$ npm install --save-dev builder-react-component-dev
+              `)}
+            />
+          </Slide>
+          <Slide bgImage={images.bgCards} bgDarken={0.20}>
+            <div style={BG_MARKDOWN_BLACKBOX}>
+              {markdown(`
+                ## THE "MAGIC"
+
+                * Add archetype **\`.bin\`** to **\`PATH\`**
+                * Add archetype **\`node_modules\`** to **\`NODE_PATH\`**
+                * Merge archetype &amp; project **\`package.json:scripts\`**
+              `, { width: "95%" })}
+            </div>
+          </Slide>
+          <Slide bgImage={images.bgBlueprint} bgDarken={0.20}>
+            <div style={BG_MARKDOWN_BLACKBOX}>
+              <Heading fit caps textColor="tertiary">An Archetype</Heading>
+              {markdown(`
+                * NPM tasks
+                * Configurations
+                * Boilerplate files
+                * Documentation
+                * Templates
+              `)}
+            </div>
           </Slide>
           <Slide>
             {/*eslint-disable max-len*/markdown(`
               ## EXAMPLES
 
-              * [\`builder-react-component\`](https://github.com/FormidableLabs/builder-react-component)
-              * \`builder-react-app\`
-              * \`builder-hapi-plugin\`
+              * [builder-victory-component](https://github.com/FormidableLabs/builder-victory-component)
+              * [builder-react-component](https://github.com/FormidableLabs/builder-react-component)
+              * [builder-react-app](https://github.com/FormidableLabs/builder-react-app)
             `)/*eslint-enable max-len*/}
           </Slide>
           <Slide>
-            {markdown(`
-              ## CONTENTS
+            {/*eslint-disable max-len*/markdown(`
+              ### TASKS
+            `)/*eslint-enable max-len*/}
+            <CodePane
+              lang="javascript"
+              source={strip(`
+                // <arch>/package.json
+                "scripts": {
+                  "foo": "echo ARCH FOO",
+                  "bar": "echo ARCH BAR",
+                  "foobar": "builder run foo && builder run bar",
+                }
 
-              * NPM tasks
-              * Configurations
-              * Boilerplate files
-              * Documentation
-              * Templates (_forthcoming_)
-            `)}
+                // <root>/package.json
+                "scripts": {
+                  "bar": "echo ROOT BAR",
+                }
+              `)}
+            />
           </Slide>
           <Slide>
             {/*eslint-disable max-len*/markdown(`
               ### TASKS
 
-              * [\`formidable-react-component-boilerplate/package.json\`](https://github.com/FormidableLabs/formidable-react-component-boilerplate/package.json)
-              * [\`builder-react-component/package.json\`](https://github.com/FormidableLabs/builder-react-component/package.json)
-              * **Note**: Special **\`npm:*\`** tasks
+              [\`builder-react-component\`](https://github.com/FormidableLabs/builder-react-component)
+
+              * [<arch>/package.json](https://github.com/FormidableLabs/builder-react-component/blob/master/package.json#L15-L55)
+              * [<root>/package.json](https://github.com/FormidableLabs/formidable-react-component-boilerplate/blob/master/package.json#L15-L20)
             `)/*eslint-enable max-len*/}
           </Slide>
           <Slide>
             {/*eslint-disable max-len*/markdown(`
               ### DEPENDENCIES
 
-              * [\`formidable-react-component-boilerplate/package.json\`](https://github.com/FormidableLabs/formidable-react-component-boilerplate/package.json)
-              * [\`builder-react-component/package.json\`](https://github.com/FormidableLabs/builder-react-component/package.json)
-              * [\`builder-react-component/dev/package.json\`](https://github.com/FormidableLabs/builder-react-component/package.json)
+              [\`builder-react-component\`](https://github.com/FormidableLabs/builder-react-component)
+
+              * [<arch>/package.json](https://github.com/FormidableLabs/builder-react-component/blob/master/package.json#L56-L66)
+              * [<arch>/dev/package.json](https://github.com/FormidableLabs/builder-react-component/blob/master/dev/package.json#L16-L43)
+              * [<root>/package.json](https://github.com/FormidableLabs/formidable-react-component-boilerplate/blob/master/package.json#L21-L34)
             `)/*eslint-enable max-len*/}
           </Slide>
           <Slide>
             {markdown(`
-              ### FILES
-
-              \`\`\`
-              DEVELOPMENT.md
-              package.json
-              dev/package.json
-
-              config/
-                babel/
-                eslint/
-                karma/
-                webpack/
-
-              init.js
-              init/
-              \`\`\`
-            `)}
-          </Slide>
-          <Slide>
-            {markdown(`
-              ## DEMO
+              ### ARCHETYPE FILES
             `)}
             <CodePane
+              lang="shell"
               source={strip(`
-                # See all tasks
+                DEVELOPMENT.md
+                package.json
+                dev/package.json
+
+                config/
+                  babel/
+                  eslint/
+                  karma/
+                  webpack/
+
+                init.js
+                init/
+              `)}
+            />
+          </Slide>
+          <Slide>
+            {/*eslint-disable max-len*/markdown(`
+              **Demo**: [builder-examples/02-builder-archetype](https://github.com/FormidableLabs/builder-examples/tree/master/02-builder-archetype)
+            `, { width: "90%", marginBottom: "1em" })/*eslint-enable max-len*/}
+            <CodePane
+              lang="bash"
+              source={strip(`
                 \$ builder help
+                \$ builder run numbers
+                \$ builder run foobar
 
-                \$ builder run check
+                # Override \`three\`, \`bar\`
+                \$ builder run three
+                \$ builder run numbers
+              `)}
+            />
+          </Slide>
+          <Slide>
+            {/*eslint-disable max-len*/markdown(`
+              **Demo**: [builder-react-component](https://github.com/FormidableLabs/builder-react-component)
+            `, { width: "90%", marginBottom: "1em" })/*eslint-enable max-len*/}
+            <CodePane
+              lang="bash"
+              source={strip(`
+                \$ builder help
                 \$ builder run lint
 
-                # Override \`lint-client\`
-                \$ builder run lint-client
+                # Override \`lint-client-test\`
+                \$ builder run lint-client-test
                 \$ builder run lint
-                \$ builder run check
               `)}
             />
           </Slide>
@@ -360,42 +636,70 @@ export default class Presentation extends React.Component {
             {/*eslint-disable max-len*/markdown(`
               ### COMPLEXITIES
 
-              Easy for **users**, complex for **architects**
-
+              * Easy for **users**, complex for **architects**
               * [Archetype authoring](https://github.com/FormidableLabs/builder#archetypes)
-              * [Tips + Tricks](https://github.com/FormidableLabs/builder#tips-tricks--notes):
-                \`process.cwd()\`, \`require.resolve()\`
+              * [Tips + Tricks](https://github.com/FormidableLabs/builder#tips-tricks--notes)
             `)/*eslint-enable max-len*/}
           </Slide>
 
           {/* -----------------------------------------------------------------
             * Section: Init
             * ----------------------------------------------------------------- */}
-          <Slide>
-            {markdown(`
-              ## BUILDER INIT
+          <Slide bgImage={images.bgShuttle} bgDarken={0.20}>
+            <div style={BG_MARKDOWN_BLACKBOX}>
+              <Heading fit caps textColor="tertiary">Builder Init</Heading>
+              {markdown(`
+                &nbsp;
 
-              A simple project generator from archetype templates.
-            `)}
+                Generate projects from archetype templates.
+              `)}
+            </div>
+          </Slide>
+          <Slide>
+            {/*eslint-disable max-len*/markdown(`
+              ## COMPONENTS
+
+              [\`builder-react-component\`](https://github.com/FormidableLabs/builder-react-component)
+
+              * [\`<arch>/init.js\`](https://github.com/FormidableLabs/builder-react-component/tree/master/init.js):
+                Prompts, defaults.
+              * [\`<arch>/init/\`](https://github.com/FormidableLabs/builder-react-component/tree/master/init):
+                Template files (Lodash/ERB-style).
+            `, { width: "95%" })/*eslint-enable max-len*/}
           </Slide>
           <Slide>
             {markdown(`
-              ## DEMO
+              ## INITIALIZATION
 
-              **Note**: Work In Progress
+              Installs like \`npm\` does...
             `)}
+            <CodePane
+              lang="bash"
+              source={strip(`
+                \$ npm install -g builder-init
+
+                \$ builder-init builder-react-component
+                \$ builder-init builder-react-component@0.3.0
+                \$ builder-init FormidableLabs/builder-react-component
+                \$ builder-init FormidableLabs/builder-react-component#v0.3.0
+                \$ builder-init git+ssh://git@github.com:FormidableLabs/builder-react-component.git
+                \$ builder-init /FULL/PATH/TO/builder-react-component
+              `)}
+            />
           </Slide>
 
           {/* -----------------------------------------------------------------
             * Thanks
             * ----------------------------------------------------------------- */}
-          <Slide bgColor="primary">
-            <Heading size={1} caps fit lineHeight={1.5} textColor="secondary">
-              Made with love in Seattle by
-            </Heading>
-            <Link href="http://www.formidable.com">
-              <Image width="100%" src={images.logo}/>
-            </Link>
+          <Slide bgImage={images.polygons}>
+            <div style={BG_MARKDOWN_BLACKBOX}>
+              <Heading size={1} caps fit lineHeight={1.5} textColor="secondary">
+                Made with love in Seattle by
+              </Heading>
+              <Link href="http://www.formidable.com">
+                <Image width="100%" src={images.logo}/>
+              </Link>
+            </div>
           </Slide>
         </Deck>
       </Spectacle>

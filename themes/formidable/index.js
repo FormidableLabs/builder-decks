@@ -59,6 +59,8 @@ theme.screen.components.cite.color = colors.tertiary;
 // Code
 theme.screen.components.code.color = colors.darkGray;
 theme.screen.components.code.fontFamily = fonts.tertiary;
+theme.screen.components.code.backgroundColor = "#eee";
+theme.screen.components.codePane.pre.fontSize = "0.8em";
 theme.screen.components.codePane.pre.height = "100%";
 // Headings
 theme.screen.components.heading.h1.color = colors.secondary;
